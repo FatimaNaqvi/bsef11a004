@@ -1,0 +1,117 @@
+﻿@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model EAD_Project.Models.Customer
+<script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <div class="alert alert-success">
+        <a href="#" class="alert-link"><h1>Customer Registration</h1></a>
+    </div>
+
+        <form method="post" action="/Customer/Save">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <table align="center" width="200" height="30">
+                <tr>
+                    <td width="100" height="30">
+                        <label title="name">Company Name:       </label>
+                    </td>
+                    <td width="200" height="30">
+                        @Html.TextBoxFor(x=>x.Cname)
+                        @Html.ValidationMessageFor(x=>x.Cname)
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100" height="30">
+                        <label title="address">Address:       </label>
+                    </td>
+                    <td width="100" height="30">
+                        @Html.TextBoxFor(x => x.Address)
+                        @Html.ValidationMessageFor(x=>x.Address)
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100" height="30">
+                        <label title="phone">Phone Number:       </label>
+                    </td>
+                    <td width="100" height="30">
+                        @Html.TextBoxFor(x => x.Phone)
+                        @Html.ValidationMessageFor(x=>x.Phone)
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100" height="30">
+                        <label title="email">Email:       </label>
+                    </td>
+                    <td width="100" height="30">
+                        @Html.TextBoxFor(x => x.Email)
+                        @Html.ValidationMessageFor(x=>x.Email)
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100" height="30">
+                        <label title="name">Username:       </label>
+                    </td>
+                    <td width="100" height="30">
+                        @Html.TextBoxFor(x => x.Uname)
+                         @Html.ValidationMessageFor(x => x.Uname)
+                    </td>
+                    <td>
+                        <input type="button" id="b1" value="Check" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td width="200">
+                        <div id="result">
+                            @Scripts.Render("~/bundles/jquery")
+                            <script>
+
+                                $(document).ready(function () {
+
+                                    $('#b1').click(function () {
+
+                                        var userName = $('#Uname').val();
+                                      
+                                        $.getJSON("/Customer/CheckUserName?UName=" + userName, function (data) {
+                                        
+                                            if (data) {
+                                                $('#result').text("User already exists in database");
+
+                                            }
+                                            else {
+                                                $('#result').text("User Name is available");
+                                            }
+                                        });
+
+                                    });
+
+                                });
+
+                            </script>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100" height="30">
+                        <label title="pass">Password:   </label>
+                    </td>
+                    <td width="100" height="30">
+                        @Html.TextBoxFor(x => x.Password)
+                        @Html.ValidationMessageFor(x => x.Password)
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="save" value="Register" />
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+

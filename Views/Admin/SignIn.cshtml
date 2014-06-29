@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "SignIn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model EAD_Project.Models.Admin
+<script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <div class="alert alert-success">
+        <a href="#" class="alert-link"><h1>Admin Sign In</h1></a>
+    </div>
+
+    <form method="post" action="/Admin/SignOut">
+        <input type="submit" name="signout" value="Sign Out" />
+    </form>
+    
+        @*<form method="post" action="/Admin/Verify">*@
+            @using (Html.BeginForm("Verify","Admin",FormMethod.Post))
+            { 
+                @Html.AntiForgeryToken()
+                 @Html.ValidationSummary(true)        
+            <table align="center" width="100" height="30">
+                <tr>
+                    <td width="50" height="30">
+                        @*<label title="name">Name:       </label>*@
+                        @Html.Label("Name: ")
+                    </td>
+                    <td width="100" height="30">
+                        @*<input type="text" name="Name" />*@
+                        @Html.TextBoxFor(m => m.Name)
+                        @Html.ValidationMessageFor(x => x.Name)
+                    </td>
+
+                </tr>
+                <tr>
+                    <td width="50" height="30">
+                        @*<label title="pass">Password:   </label>*@
+                        @Html.Label("Password: ")
+                    </td>
+                    <td width="100" height="30">
+                        @*<input type="password" name="Pass" />*@
+                        @Html.PasswordFor(m => m.Password)
+                        @Html.ValidationMessageFor(x => x.Password)
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="signin" id="b1" value="Sign In" />
+                    </td>
+                </tr>
+                
+            </table>
+            }
+        @*</form>*@
+        
+    
+
+

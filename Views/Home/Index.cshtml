@@ -1,0 +1,54 @@
+﻿@{
+    //ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="jumbotron">
+        <h1 style="color:darkgreen">Habile Business Organization</h1>
+        <p style="color:darkgreen">Polyester button manufacturers and General traders</p>
+        <p><a class="btn btn-success btn-lg" role="button" href="/Home/About">Learn more</a></p>
+    </div>
+    <div class="row">
+        
+    <div class="col-lg-3">
+        <div class=" panel panel-success">
+            <div class="panel-heading"><h3 style="align-self:center;">Customers</h3></div>
+            <div class=" panel-body">
+                <label title="Register">Register now to place orders online</label>
+                <br />
+                <a class="btn btn-success btn-md" href="/Customer/Register">Register</a>
+                <br />
+                <br />
+                <label title="Login">Already a customer?</label>
+                <br />
+                <a class="btn btn-success btn-md" href="/Customer/Login">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class=" panel panel-success">
+            <div class="panel-heading"><h3 style="align-self:center">Our Products</h3></div>
+            <div class=" panel-body">
+                <img src="~/Untitled2.png" />
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3">
+        <div class=" panel panel-success">
+            <div class="panel-heading"><h3 style="align-self:center">Orders</h3></div>
+            <div class=" panel-body">
+                <label title="Order">Place an order here</label>
+                <br />
+                <a class="btn btn-success btn-md" href="/Order/Order">Order</a>
+                <br />
+                <br />
+                @*<label title="Login">View Orders</label>
+                <br />
+                <a class="btn btn-success btn-md" href="/Home/ViewOrder">View</a>*@
+            </div>
+        </div>
+    </div>
+        
+</div>
